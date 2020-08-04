@@ -5,6 +5,7 @@
 ## Parts
 
 - imageio: input/output of opencv images using streams
+- contours: input/output and other functions on contours
 
 ### TODO
 
