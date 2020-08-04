@@ -59,16 +59,16 @@ void write_image(cv::Mat image, std::ostream & output, bool binary)
     std::vector<unsigned char> output_buffer;
     std::string output_format;
     if (binary) {
-        output_format = "pbm";
+        output_format = ".pbm";
     }
     else {
         switch (image.channels()) {
         case 1:
-            output_format = "pgm";
+            output_format = ".pgm";
             break;
 
         case 3:
-            output_format = "ppm";
+            output_format = ".ppm";
             break;
 
         default:
