@@ -2,7 +2,7 @@
 
 namespace utils {
 
-cv::Mat read_image(std::istream& input)
+cv::Mat read_image(std::istream & input)
 {
     input >> std::noskipws;
     std::vector<char> buf;
@@ -60,9 +60,9 @@ void write_image(cv::Mat image, std::ostream & output, bool binary)
     std::string output_format;
     if (binary) {
         output_format = "pbm";
-    } else {
-        switch (image.channels())
-        {
+    }
+    else {
+        switch (image.channels()) {
         case 1:
             output_format = "pgm";
             break;
@@ -70,7 +70,7 @@ void write_image(cv::Mat image, std::ostream & output, bool binary)
         case 3:
             output_format = "ppm";
             break;
-        
+
         default:
             throw std::domain_error(std::to_string(image.channels()) + " channels is not supported by netpbm");
         }
