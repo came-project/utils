@@ -3,6 +3,8 @@
 #include <iostream>
 #include <vector>
 
+namespace utils {
+
 /**
  * Reads a vector of contours from a stream
  * 
@@ -11,7 +13,7 @@
  * @return Vector of contours from `input` 
  */
 template <typename coord_type>
-std::vector<std::vector<cv::Point_<coord_type>>> readContours(std::istream & input = std::cin)
+std::vector<std::vector<cv::Point_<coord_type>>> read_contours(std::istream & input = std::cin)
 {
     std::vector<std::vector<cv::Point_<coord_type>>> contours;
     for (std::string line; std::getline(input, line);) {
@@ -25,3 +27,5 @@ std::vector<std::vector<cv::Point_<coord_type>>> readContours(std::istream & inp
     }
     return contours;
 }
+
+} // namespace utils
