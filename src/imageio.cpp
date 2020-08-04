@@ -75,6 +75,9 @@ void write_image(cv::Mat image, std::ostream & output, bool binary)
             throw std::domain_error(std::to_string(image.channels()) + " channels is not supported by netpbm");
         }
     }
+    if (image.depth() > 3) {
+        std::cout << "Warning: provided image's depth is 32 or 64 bit, which is not supported by netpbm. Depth will be reduced.";
+    }
     cv::imencode(output_format, image, output_buffer);
     for (unsigned char c : output_buffer) {
         output << c;
