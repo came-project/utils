@@ -79,9 +79,7 @@ void write_image(cv::Mat image, std::ostream & output, bool binary)
         std::cout << "Warning: provided image's depth is 32 or 64 bit, which is not supported by netpbm. Depth will be reduced.";
     }
     cv::imencode(output_format, image, output_buffer);
-    for (unsigned char c : output_buffer) {
-        output << c;
-    }
+    output.write(reinterpret_cast<const char *>(output_buffer.data()), output_buffer.size());
 }
 
 } // namespace utils
