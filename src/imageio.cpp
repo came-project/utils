@@ -13,9 +13,8 @@ cv::Mat read_image(std::istream & input)
     size_t height;
     size_t width;
 
-    while (!input.eof() && (reading_prefix || (buf.size() - prefix_size) * 8 < height * width * bit_per_pixel)) {
-        char t;
-        input >> t;
+    char t;
+    while ((reading_prefix || (buf.size() - prefix_size) * 8 < height * width * bit_per_pixel) && input >> t) {
         if (reading_prefix)
             prefix_size++;
         if (t == '\n') {
@@ -36,6 +35,10 @@ cv::Mat read_image(std::istream & input)
             }
         }
         buf.push_back(t);
+    }
+
+    if (buf.size() == 0) {
+        return cv::Mat();
     }
 
     return cv::imdecode(buf, cv::IMREAD_UNCHANGED);
