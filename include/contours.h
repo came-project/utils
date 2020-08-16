@@ -29,4 +29,25 @@ std::vector<std::vector<cv::Point_<coord_type>>> read_contours(std::istream & in
     return contours;
 }
 
+/**
+ * Prints a vector of contours to a stream
+ *
+ * @param Vector of shapes (Vectors of Points)
+ * @param output Stream to print
+ * @tparam coord_type Coordinate type of `Point`s in contours
+ */
+template <typename coord_type>
+void print_contours(std::vector<std::vector<cv::Point_<coord_type>>> const & contours, std::ostream & os = std::cout)
+{
+    for (auto const & contour : contours) {
+        for (std::size_t i = 0; i < contour.size(); i++) {
+            if (i > 0) {
+                os << ' ';
+            }
+            os << contour[i].x << ' ' << contour[i].y;
+        }
+        os << std::endl;
+    }
+}
+
 } // namespace utils
