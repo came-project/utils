@@ -32,7 +32,7 @@ std::vector<std::vector<cv::Point_<coord_type>>> read_contours(std::istream & in
 /**
  * Prints a vector of contours to a stream
  *
- * @param Vector of shapes (Vectors of Points)
+ * @param Vector of contours
  * @param output Stream to print
  * @tparam coord_type Coordinate type of `Point`s in contours
  */
