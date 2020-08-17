@@ -1,5 +1,10 @@
 #include <imageio.h>
 
+#ifdef _WIN32
+#include <fcntl.h>
+#include <io.h>
+#endif
+
 namespace utils {
 
 cv::Mat read_image(std::istream & input)
@@ -59,6 +64,9 @@ std::vector<cv::Mat> read_images()
 
 void write_image(cv::Mat image, std::ostream & output, bool binary)
 {
+#ifdef _WIN32
+    setmode(fileno(stdout), O_BINARY);
+#endif
     std::vector<unsigned char> output_buffer;
     std::string output_format;
     if (binary) {
