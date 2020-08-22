@@ -9,9 +9,10 @@ namespace utils {
  * Reads an image from a stream
  * 
  * @param input Stream from which image is read
+ * @param untie_input Whether to call `input.tie(nullptr)` for performance
  * @return Image from `input` 
  */
-cv::Mat read_image(std::istream & input = std::cin);
+cv::Mat read_image(std::istream & input = std::cin, bool untie_input = true);
 
 /**
  * Reads images from a stream until no characters are left or the stream fails

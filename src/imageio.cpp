@@ -7,8 +7,10 @@
 
 namespace utils {
 
-cv::Mat read_image(std::istream & input)
+cv::Mat read_image(std::istream & input, bool untie_input)
 {
+    if (untie_input)
+        input.tie(nullptr);
     input >> std::noskipws;
     std::vector<char> buf;
     size_t newline_count = 0;
