@@ -39,7 +39,8 @@ cv::Mat read_image(std::istream & input, bool untie_input)
             if (newline_count == 3 && buf[1] != '4') {
                 if (buf[1] == '6') {
                     bit_per_pixel = 24;
-                } else {
+                }
+                else {
                     std::stringstream ss(std::string(buf.begin() + second_newline_idx, buf.end()));
                     size_t t;
                     ss >> t;
